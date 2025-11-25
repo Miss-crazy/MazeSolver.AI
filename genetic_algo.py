@@ -32,6 +32,3 @@ def mutate(individual , mutation_rate = 0.01):
 def selection(population):
     population.sort(key = lambda ind: ind.fitness , reverse =True)
     return population[:len(population)//2]
-
-
-        

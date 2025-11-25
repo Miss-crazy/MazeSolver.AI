@@ -12,7 +12,7 @@ CELL_SIZE = WIDTH // COLS
 def draw_maze(win , maze):
     for y in range(ROWS):
         for x in range(COLS):
-            color = (0,0,0) if maze[y][x]==1 else (255 , 255, 255)
+            color = (0,0,0) if maze[y][x]==1 else (200, 200, 150)
             pygame.draw.rect(win , color ,(x*CELL_SIZE , y*CELL_SIZE , CELL_SIZE , CELL_SIZE))
 
 def draw_path(win , individual ):
