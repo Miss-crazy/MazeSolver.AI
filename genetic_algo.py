@@ -17,7 +17,7 @@ class Individual :
         end_x , end_y = END
         dist = abs(pos[0] - end_x)+abs(pos[1]- end_y)
         self.fitness = 1/(dist+1)
-    
+                    
 def crossover(parent1 , parent2):
     split = random.randint(1 , len(parent1.genes)-1)
     child = Individual()
