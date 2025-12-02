@@ -1,18 +1,18 @@
 import pygame
 import sys 
 import random 
-from maze import  MAZE , START , END 
+from maze import  MAZE , START , END , ROWS , COLS
 from genetic_algo import Individual , crossover , mutate , selection 
+from moves import reaches_end
 
 #pygame setting 
 WIDTH , HEIGHT = 600 , 600 
-ROWS , COLS = len(MAZE) , len(MAZE[0])
 CELL_SIZE = WIDTH // COLS 
 
 def draw_maze(win , maze):
     for y in range(ROWS):
         for x in range(COLS):
-            color = (0,0,0) if maze[y][x]==1 else (200, 200, 150)
+            color = (0,0,0) if maze[y][x]==1 else (255, 55, 150)
             pygame.draw.rect(win , color ,(x*CELL_SIZE , y*CELL_SIZE , CELL_SIZE , CELL_SIZE))
 
 def draw_path(win , individual ):
@@ -27,7 +27,7 @@ def draw_path(win , individual ):
             x -= 1
         elif move == 'RIGHT' and x < COLS-1 and MAZE[y][x+1] == 0:
             x += 1
-        pygame.draw.circle(win , (255,0,0),pos, CELL_SIZE//4)
+        pygame.draw.circle(win , (255,255,255),pos, CELL_SIZE//4)
 
 def main():
     pygame.init()
@@ -46,6 +46,33 @@ def main():
         #calculate fitness
         for ind in population:
             ind.calculate_fitness()
+        solution_found =False
+        best_solution = None
+        for ind in population :
+            if reaches_end(ind):
+                solution_found = True
+                best_solution = ind
+                print(f"solution found at generation {gen} ! Fitness: {ind.fitness}")
+                break
+            
+        if solution_found:
+            win.fill((255,255,255))
+            draw_maze(win , MAZE)
+            draw_path(win , best_solution)
+
+            #add success text
+            font = pygame.font.SysFont(None,48)
+            text = font.render("SOLUTION FOUND!",True,(0,255,0))
+            win.blit(text , (WIDTH//2-150 , 20))
+            pygame.display.flip()
+
+            #keep window open until user closes it 
+            while True:
+                for event in pygame.event.get():
+                    if event.type == pygame.QUIT:
+                        pygame.quit()
+                        sys.exit()
+
         #selection 
         population = selection(population)
         next_gen = []
@@ -64,12 +91,12 @@ def main():
         draw_path(win , best)
         
         pygame.display.flip()
-        clock.tick(10)
+        clock.tick(5)
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
-                #sys.exit()
+                sys.exit()
 
 if __name__ =="__main__":
     main()
