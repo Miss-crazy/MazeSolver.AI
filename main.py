@@ -52,7 +52,7 @@ def main():
             if reaches_end(ind):
                 solution_found = True
                 best_solution = ind
-                print(f"solution found at generation {gen} ! Fitness: {ind.fitness}")
+                print(f"Solution found at generation {gen} ! Fitness: {ind.fitness}")
                 break
             
         if solution_found:
@@ -62,7 +62,7 @@ def main():
 
             #add success text
             font = pygame.font.SysFont(None,48)
-            text = font.render("SOLUTION FOUND!",True,(0,255,0))
+            text = font.render("SOLUTION FOUND!",True,(255,255,255))
             win.blit(text , (WIDTH//2-150 , 20))
             pygame.display.flip()
 
