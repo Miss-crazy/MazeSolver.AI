@@ -3,7 +3,7 @@
 A **Genetic Algorithm-based Maze Solver** that searches for a path through a maze by simulating evolution.  
 The project visualizes the maze-solving process on screen and reports progress in the terminal until a solution is found.
 
-![Maze Solver](images/maze solver.jpg)
+<img src="images/maze solver.jpeg" alt="Maze Solver Screenshot" width="600">
 
 > Example terminal output:
 > `Solution found at generation 9 ! Fitness: 0.3333333333333333`
