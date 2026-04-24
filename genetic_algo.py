@@ -24,7 +24,7 @@ def crossover(parent1 , parent2):
     child.genes = parent1.genes[:split] + parent2.genes[split:]
     return child 
 
-def mutate(individual , mutation_rate = 0.01):
+def mutate(individual , mutation_rate = 0.03):
     for i in range(len(individual.genes)):
         if random.random() < mutation_rate :
             individual.genes[i] = random.choice(DIRECTIONS)

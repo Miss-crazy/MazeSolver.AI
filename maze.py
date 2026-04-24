@@ -28,5 +28,5 @@ MAZE = [
 ROWS , COLS = len(MAZE) , len(MAZE[0])
 
 def in_bounds(pos , maze):
-    x,y = pos 
+    x,y = pos #x = cols and y = rows
     return 0<=y<len(maze) and 0<=x<len(maze[0])
