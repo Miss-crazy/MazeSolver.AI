@@ -79,7 +79,7 @@ The visualization then highlights the found route through the maze, making the r
 
 
 **Reference:**  
-Maze Navigation via Genetic Optimization. Scientific Research Publishing. [web:7]
+<a href="https://medium.com/@AnasBrital98/genetic-algorithm-explained-76dfbc5de85d">Read the full article on medium</a>
 
 ---
 
